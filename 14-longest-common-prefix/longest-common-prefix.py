@@ -4,14 +4,16 @@ class Solution(object):
         :type strs: List[str]
         :rtype: str
         """
-        common_prefix = ""
-
-        for i in range(len(strs[0])):
-            for word in strs:
-                if i >= len(word) or word[i] != strs[0][i]:
-                    return common_prefix
-
-            common_prefix += strs[0][i]
-
-        return common_prefix
+        if not strs:
+            return ""
+        
+        strs.sort()
+        first = strs[0]
+        last = strs[-1]
+        
+        i = 0
+        while i < len(first) and first[i] == last[i]:
+            i += 1
+        
+        return first[:i]
         
