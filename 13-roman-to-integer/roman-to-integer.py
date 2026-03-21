@@ -15,16 +15,13 @@ class Solution(object):
         }
         i = 0
         total = 0
+
         for i in range(len(s)):
-            current = roman_numerals[s[i]]
-            if i < len(s) - 1:
-                next = roman_numerals[s[i+1]]
-                if current < next:
-                    total -= current
-                else:
-                    total += current
+            if i < len(s) - 1 and roman_numerals[s[i]] < roman_numerals[s[i+1]]:
+                total -= roman_numerals[s[i]]
             else:
-                total += current
+                total += roman_numerals[s[i]]
+
         return total
         
         
